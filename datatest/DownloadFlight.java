@@ -36,7 +36,7 @@ public class DownloadFlight {
                     new InputStreamReader(conn.getInputStream(), "utf-8"));
 
             String responseJson = br.readLine();
-            System.out.println(responseJson);
+            // System.out.println(responseJson);
 
             Gson gson = new Gson();
             FlightDto dto = gson.fromJson(responseJson, FlightDto.class);
