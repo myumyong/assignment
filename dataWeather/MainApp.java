@@ -10,21 +10,16 @@ import dataWeather.WeatherDto.Body.Items.Item;
 
 public class MainApp {
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("======오늘의 날짜를 입력하세요.======");
+        System.out.println("=========ex)20220127==========");
+        String baseDate = sc.nextLine();
+        System.out.println("===현재 시각을 정시 단위로 입력하세요.==");
+        System.out.println("ex)1700,0600");
+        String baseTime = sc.nextLine();
 
-        System.out.println("=====부산광역시 연제구 연제5동의 날씨 정보=====");
-        System.out.println("강수형태 = PTY");
-        System.out.println("습도 = REH");
-        System.out.println("1시간 강수량=RN1");
-        System.out.println("풍향 = VEC");
-        System.out.println("(남북성분)풍속=VVV");
-        System.out.println("풍속=WSD");
-        System.out.println("T1H=기온");
-        System.out.println("====================================");
+        List<Item> weatherList = DownloadWeather.getWeatherList(baseDate, baseTime);
 
-        List<Item> weatherList = DownloadWeather.getWeatherList();
-
-        for (int i = 0; i < weatherList.size(); i++) {
-            System.out.println(weatherList.get(i).getCategory() + " = " + weatherList.get(i).getObsrValue());
-        }
+        System.out.println("부산광역시 연제구 연제5동의 현재 온도는 " + weatherList.get(3).getObsrValue() + "℃ 입니다.");
     }
 }
